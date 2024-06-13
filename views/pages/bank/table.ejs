@@ -1,0 +1,35 @@
+<table id="dataTable" class="table table-bordered table-striped">
+   <thead>
+   <tr>
+     <th>No</th>
+     <th>Bank Name</th>
+     <th>Account Number</th>
+     <th>Owner Name</th>
+     <th>Action</th>
+   </tr>
+   </thead>
+   <tbody>
+    <% banks.forEach((bank, index) => { %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= bank.nameBank %></td>
+        <td><%= bank.nomorRekening %></td>
+        <td><%= bank.name %></td>
+        <td>
+          <button
+            type="button"
+            data-id="<%= bank.id %>"
+            data-name="<%= bank.name %>"
+            data-nameBank="<%= bank.nameBank %>"
+            data-nomorRekening="<%= bank.nomorRekening %>"
+            class="btn btn-warning btn-sm text-white btn-update"
+            >Edit</button
+          >
+          <form action="/admin/bank/<%= bank.id %>?_method=DELETE" method="post" class="d-inline">
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+   </tbody>
+</table>

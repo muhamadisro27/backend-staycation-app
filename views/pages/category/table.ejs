@@ -1,0 +1,29 @@
+<table id="dataTable" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% categories.forEach((category, index) => { %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= category.name %></td>
+      <td>
+        <button
+          type="button"
+          data-id="<%= category.id %>"
+          data-name="<%= category.name %>"
+          class="btn btn-warning btn-sm text-white btn-update"
+          >Edit</button
+        >
+        <form action="/admin/category/<%= category.id %>?_method=DELETE" method="post" class="d-inline">
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
